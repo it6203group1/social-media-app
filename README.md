@@ -21,10 +21,37 @@ API endpoint is on `http://localhost:3000/` using Express 4 server with nodemon 
 
 - Windows users please use [Git Bash](https://stackoverflow.com/a/37478310) or [Cmder](http://cmder.net/) to run the commands.
 
-## Deployment to Production
+## Deployment
+
+### Node scripts for production:
+
 + `npm run start:prod` - Build the Angular project into the dist folder and Launch in production env Node.js server.
 + `npm run server` - Launch in production env Node.js server.
 + `npm run build` - Build the ng project into the dist folder. In production you will just start the server.js file
+
+### Deployment to Digital Ocean:
+
+Digital ocean is a great option to deploy a MEAN app, here is the script to deploy to a mongodb droplet:
+
+```
+# Script for digital ocean droplet
+sudo apt update
+
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install -y build-essential git nodejs
+
+# Gets social-network app from github
+git clone https://github.com/it6203group1/social-media-app.git
+cd social-media-app/
+npm install
+npm run start:prod
+
+# PM2 production process manager for Node.js
+systemctl enable pm2-root
+npx pm2 save
+npx pm2 startup
+```
 
 Stack Technologies
 ===================
