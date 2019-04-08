@@ -5,7 +5,7 @@ Social media project for KSU IT6203 Group 1.
 Demo & Resources
 ===================
 - [Demo](http://social-ksu.ddns.net/)
-- [Server IP](157.230.60.35) 
+- [Server IP](http://157.230.180.3) 
 
 Development server
 ===================
