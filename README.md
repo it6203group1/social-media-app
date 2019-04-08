@@ -49,9 +49,10 @@ npm install
 npm run start:prod
 
 # PM2 production process manager for Node.js
-systemctl enable pm2-root
+npm run demon
 npx pm2 save
 npx pm2 startup
+systemctl enable pm2-root
 ```
 
 Stack Technologies
