@@ -4,6 +4,8 @@
   "description": "Angular 4 MEAN app",
   "scripts": {
     "start": "concurrently  \"nodemon server.js\" \"ng serve --no-aot --proxy-config proxy.conf.json\"",
+    "start:prod": "npm run build && npm run server",
+    "server": "NODE_ENV=production node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

@@ -5,7 +5,6 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const chalk = require('chalk');
-const errorHandler = require('errorhandler');
 const dotenv = require('dotenv');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -49,24 +48,13 @@ app.get("/api", function(req, res) {
   res.send('Hello World!');
 });
 
-app.all("*", function(req, res) {
-  res.redirect("/");
-});
-
-/**
- * Error Handler.
- */
-if (process.env.NODE_ENV === 'development') {
-  app.use(errorhandler())
-}
-
 /**
  * Catch all the routes and give back the Angular app
  */
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('./public/dist/'));
+  app.use(express.static('./dist/social-media-app/'));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/dist/index.html'));
+    res.sendFile(path.join(__dirname, './dist/social-media-app/index.html'));
   });
 }
 
@@ -76,6 +64,11 @@ app.use(function (err, req, res, next) {
       "message": err.name + ": " + err.message
     });
   }
+});
+
+
+app.all("*", function(req, res) {
+  res.redirect("/");
 });
 
 /**
