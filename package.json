@@ -5,7 +5,8 @@
   "scripts": {
     "start": "concurrently  \"nodemon server.js\" \"ng serve --no-aot --proxy-config proxy.conf.json\"",
     "start:prod": "npm run build && npm run server",
-    "server": "NODE_ENV=production pm2 start server.js && pm2 startup",
+    "server": "PORT=80 NODE_ENV=production node server.js",
+    "demon": "PORT=80 NODE_ENV=production pm2 start server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
